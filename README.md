@@ -1,8 +1,6 @@
 # Te-Peltier-Controller
 Matlab interface for a TE Technologies TC-720 Thermoelectric Controller
 
-## Summary
-
 ## Setup
 Set up the TC-720 as described in the manual and connect to your computer using the USB cable.
 
