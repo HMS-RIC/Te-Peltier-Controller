@@ -14,6 +14,7 @@ properties
     serialPort;
     timeout = 1; % in sec
     currSetTemp = 25;
+    minSamplePeriod = 0.1;  % don't want to overburden controller or saturate serial communications
     heatingPID;
     coolingPID;
 
@@ -195,6 +196,10 @@ methods
     end
 
     function logTemperature (obj, samplePeriod, logDuration)
+        if (samplePeriod < minSamplePeriod)
+            samplePeriod = minSamplePeriod;
+            warning(sprintf('logTemperature: SamplePeriod is too small; Resetting to %g sec. '))
+        end
         nSamples = ceil(logDuration / samplePeriod);
         % start temperature stimulus
         tempLogTimer = timer;
