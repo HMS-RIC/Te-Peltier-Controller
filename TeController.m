@@ -196,9 +196,9 @@ methods
     end
 
     function logTemperature (obj, samplePeriod, logDuration)
-        if (samplePeriod < minSamplePeriod)
-            samplePeriod = minSamplePeriod;
-            warning(sprintf('logTemperature: SamplePeriod is too small; Resetting to %g sec. '))
+        if (samplePeriod < obj.minSamplePeriod)
+            samplePeriod = obj.minSamplePeriod;
+            warning(sprintf('logTemperature: SamplePeriod is too small; Resetting to %g sec. ', obj.minSamplePeriod))
         end
         nSamples = ceil(logDuration / samplePeriod);
         % start temperature stimulus
